@@ -1,0 +1,106 @@
+name: "➕ Add New Protocol"
+description: "Suggest adding a new network protocol or port"
+title: "[New Protocol] "
+labels: ["new-protocol", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Please fill out the details below.
+        تشکر از مشارکت شما! لطفاً اطلاعات زیر را پر کنید.
+
+  - type: input
+    id: port
+    attributes:
+      label: Port Number / شماره پورت
+      placeholder: "e.g. 5432"
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Protocol Name / نام پروتکل
+      placeholder: "e.g. PostgreSQL"
+    validations:
+      required: true
+
+  - type: input
+    id: abbreviation
+    attributes:
+      label: Abbreviation / مخفف
+      placeholder: "e.g. PostgreSQL"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport / نوع انتقال
+      options:
+        - TCP
+        - UDP
+        - TCP/UDP
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category_en
+    attributes:
+      label: Category (English) / دسته‌بندی
+      options:
+        - File Transfer
+        - Web
+        - Email
+        - Security
+        - Remote Access
+        - Network Services
+        - Network Management
+        - Directory
+        - Database
+        - Message Queue
+        - Media & Communication
+        - Sharing
+        - Proxy
+        - Container & DevOps
+        - Monitoring
+        - Gaming & Multimedia
+        - Web Server & API
+        - Printing
+        - Storage
+        - CI/CD & Dev Tools
+        - Team Communication
+        - Virtualization
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: description_en
+    attributes:
+      label: Description (English) / توضیح انگلیسی
+      placeholder: "e.g. Powerful open-source relational database"
+    validations:
+      required: true
+
+  - type: input
+    id: description_fa
+    attributes:
+      label: Description (Farsi) / توضیح فارسی
+      placeholder: "مثلاً: پایگاه داده رابطه‌ای قدرتمند متن‌باز"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes / توضیحات بیشتر
+      placeholder: "Any references, RFC numbers, or extra context..."
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I verified this port is not already in the list
+          required: true
+        - label: I checked the port number is correct (IANA or widely used)
+          required: true
