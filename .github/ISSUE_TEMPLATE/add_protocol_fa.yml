@@ -1,0 +1,115 @@
+name: "➕ افزودن پروتکل جدید"
+description: "پیشنهاد اضافه کردن پروتکل یا پورت جدید به لیست"
+title: "[پروتکل جدید] "
+labels: ["new-protocol", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## افزودن پروتکل جدید
+        ممنون از مشارکت شما! لطفاً اطلاعات زیر را کامل پر کنید تا پروتکل به لیست اضافه بشه.
+
+  - type: input
+    id: port
+    attributes:
+      label: شماره پورت
+      description: شماره پورتی که این پروتکل استفاده می‌کنه
+      placeholder: "مثلاً 5432"
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: نام پروتکل
+      description: نام رایج پروتکل
+      placeholder: "مثلاً PostgreSQL"
+    validations:
+      required: true
+
+  - type: input
+    id: abbreviation
+    attributes:
+      label: مخفف
+      description: نام مخفف یا کوتاه‌شده
+      placeholder: "مثلاً PostgreSQL"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: نوع پروتکل انتقال
+      description: از کدوم پروتکل لایه انتقال استفاده می‌کنه؟
+      options:
+        - TCP
+        - UDP
+        - TCP/UDP
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: دسته‌بندی
+      description: مرتبط‌ترین دسته‌بندی رو انتخاب کنید
+      options:
+        - انتقال فایل
+        - وب
+        - ایمیل
+        - امنیت
+        - دسترسی از راه دور
+        - سرویس‌های شبکه
+        - مدیریت شبکه
+        - دایرکتوری
+        - پایگاه داده
+        - صف پیام
+        - رسانه و ارتباطات
+        - اشتراک‌گذاری
+        - پراکسی
+        - کانتینر و DevOps
+        - مانیتورینگ
+        - بازی و چندرسانه‌ای
+        - وب‌سرور و API
+        - چاپ
+        - ذخیره‌سازی
+        - CI/CD و ابزارهای توسعه
+        - ارتباطات تیمی
+        - مجازی‌سازی
+        - سایر (در توضیحات بنویسید)
+    validations:
+      required: true
+
+  - type: input
+    id: description_fa
+    attributes:
+      label: توضیحات (فارسی)
+      description: یک توضیح کوتاه به فارسی
+      placeholder: "مثلاً: پایگاه داده رابطه‌ای قدرتمند متن‌باز"
+    validations:
+      required: true
+
+  - type: input
+    id: description_en
+    attributes:
+      label: توضیحات (انگلیسی) — اختیاری
+      description: توضیح کوتاه به انگلیسی (اگه ننویسید ما ترجمه می‌کنیم)
+      placeholder: "e.g. Powerful open-source relational database"
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: توضیحات بیشتر
+      description: هر رفرنس، شماره RFC یا اطلاعات اضافی
+      placeholder: "RFC 1234، لینک مستندات رسمی و..."
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: چک‌لیست
+      description: لطفاً قبل از ارسال بررسی کنید
+      options:
+        - label: مطمئن شدم این پورت قبلاً توی لیست نیست
+          required: true
+        - label: شماره پورت رو از IANA یا منبع معتبر چک کردم
+          required: true

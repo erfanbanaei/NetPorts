@@ -6,13 +6,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for contributing! Please fill out the details below.
-        تشکر از مشارکت شما! لطفاً اطلاعات زیر را پر کنید.
+        ## Add a New Protocol
+        Thanks for contributing! Please fill out the details below so we can add the protocol to the list.
 
   - type: input
     id: port
     attributes:
-      label: Port Number / شماره پورت
+      label: Port Number
+      description: The port number used by this protocol
       placeholder: "e.g. 5432"
     validations:
       required: true
@@ -20,7 +21,8 @@ body:
   - type: input
     id: name
     attributes:
-      label: Protocol Name / نام پروتکل
+      label: Protocol Name
+      description: The common name of the protocol
       placeholder: "e.g. PostgreSQL"
     validations:
       required: true
@@ -28,7 +30,8 @@ body:
   - type: input
     id: abbreviation
     attributes:
-      label: Abbreviation / مخفف
+      label: Abbreviation
+      description: The abbreviation or short name
       placeholder: "e.g. PostgreSQL"
     validations:
       required: true
@@ -36,7 +39,8 @@ body:
   - type: dropdown
     id: transport
     attributes:
-      label: Transport / نوع انتقال
+      label: Transport Protocol
+      description: Which transport layer protocol does it use?
       options:
         - TCP
         - UDP
@@ -45,9 +49,10 @@ body:
       required: true
 
   - type: dropdown
-    id: category_en
+    id: category
     attributes:
-      label: Category (English) / دسته‌بندی
+      label: Category
+      description: Select the most relevant category
       options:
         - File Transfer
         - Web
@@ -71,14 +76,15 @@ body:
         - CI/CD & Dev Tools
         - Team Communication
         - Virtualization
-        - Other (specify below)
+        - Other (specify in notes)
     validations:
       required: true
 
   - type: input
     id: description_en
     attributes:
-      label: Description (English) / توضیح انگلیسی
+      label: Description (English)
+      description: A brief description in English
       placeholder: "e.g. Powerful open-source relational database"
     validations:
       required: true
@@ -86,19 +92,22 @@ body:
   - type: input
     id: description_fa
     attributes:
-      label: Description (Farsi) / توضیح فارسی
-      placeholder: "مثلاً: پایگاه داده رابطه‌ای قدرتمند متن‌باز"
+      label: Description (Farsi) — Optional
+      description: A brief description in Farsi (we can translate if left empty)
+      placeholder: "e.g. پایگاه داده رابطه‌ای قدرتمند متن‌باز"
 
   - type: textarea
     id: notes
     attributes:
-      label: Additional Notes / توضیحات بیشتر
-      placeholder: "Any references, RFC numbers, or extra context..."
+      label: Additional Notes
+      description: Any references, RFC numbers, or extra context
+      placeholder: "RFC 1234, official docs link, etc."
 
   - type: checkboxes
     id: checks
     attributes:
       label: Checklist
+      description: Please verify before submitting
       options:
         - label: I verified this port is not already in the list
           required: true
