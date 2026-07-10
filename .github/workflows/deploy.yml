@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+on:
+  # هر push به شاخه‌ی main به‌صورت خودکار دیپلوی می‌شود
+  push:
+    branches: [main]
+  # امکان اجرای دستی از تب Actions
+  workflow_dispatch:
+
+# دسترسی‌های لازم برای انتشار روی GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# جلوگیری از اجرای هم‌زمان چند دیپلوی؛ آخرین push اولویت دارد
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        # basePath خالی است چون روی دامنه‌ی سفارشی netports.ir (روت) سرو می‌شود
+        run: npm run build
+
+      - name: Disable Jekyll (serve _next folder)
+        run: touch out/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
